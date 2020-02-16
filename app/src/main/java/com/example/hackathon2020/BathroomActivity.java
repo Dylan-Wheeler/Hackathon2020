@@ -26,7 +26,7 @@ public class BathroomActivity extends AppCompatActivity {
         bathroomPropertiesTextView = findViewById(R.id.tv_bathroom_properties);
         bathroomRatingBar = findViewById(R.id.rb_bathroom_rating);
 
+//        TODO : make this link to an actual image instead of just the string
         mapImageImageView.setImageDrawable(currentBathroom.getMapID());
-
     }
 }

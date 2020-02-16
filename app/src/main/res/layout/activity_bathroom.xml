@@ -23,6 +23,7 @@
                 android:layout_height="wrap_content"/>
 
 <!-- put the icon modifiers (tags) here -->
+<!-- TODO : add modifiers and their icons -->
 
             <TextView
                 android:id="@+id/tv_bathroom_distance"
