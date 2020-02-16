@@ -75,6 +75,46 @@ public class Bathroom implements Serializable {
         this.numRatings++;
     }
 
+    public float getTotalRatings() {
+        return this.totalRatings;
+    }
+
+    public int getNumRatings() {
+        return this.numRatings;
+    }
+
+    public int getNumStalls() {
+        return this.numStalls;
+    }
+
+    public int getNumSinks() {
+        return this.numSinks;
+    }
+
+    public int getNumUrinals() {
+        return this.numUrinals;
+    }
+
+    public boolean isMale() {
+        return this.isMale;
+    }
+
+    public boolean isFemale() {
+        return this.isFemale;
+    }
+
+    public boolean isOther() {
+        return this.isOther;
+    }
+
+    public boolean isWheelchair() {
+        return this.isWheelchair;
+    }
+
+    public boolean isFamily() {
+        return this.isFamily;
+    }
+
     public String getProperties() {
         String out = this.getRating() + "\n";
 
