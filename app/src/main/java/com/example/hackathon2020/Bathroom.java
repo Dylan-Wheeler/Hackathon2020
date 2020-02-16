@@ -1,9 +1,12 @@
 package com.example.hackathon2020;
 
 import com.google.android.gms.maps.model.LatLng;
+import java.io.Serializable;
 
 
-public class Bathroom {
+public class Bathroom implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String name;
     private String picture;
     private String mapID;
