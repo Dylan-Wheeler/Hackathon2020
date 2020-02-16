@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 //      TODO : load array of Bathroom objects
+        bathrooms = loadTestBathrooms();
 
         BathroomListRecyclerView = findViewById(R.id.rv_bathroom_list);
 
@@ -32,6 +34,23 @@ public class MainActivity extends AppCompatActivity {
 
         mAdapter = new BathroomsAdapter(bathrooms);
         BathroomListRecyclerView.setAdapter(mAdapter);
+    }
+
+    private List<Bathroom> loadTestBathrooms(){
+        List<Bathroom> accumulate = new ArrayList<Bathroom>();
+
+        accumulate.add(new Bathroom());
+        accumulate.add(new Bathroom());
+        accumulate.add(new Bathroom());
+        accumulate.add(new Bathroom());
+        accumulate.add(new Bathroom());
+        accumulate.add(new Bathroom());
+        accumulate.add(new Bathroom());
+        accumulate.add(new Bathroom());
+        accumulate.add(new Bathroom());
+        accumulate.add(new Bathroom());
+
+        return accumulate;
     }
 
 //    TODO : change view to corresponding bathroom page when clicked
