@@ -1,6 +1,5 @@
 package com.example.hackathon2020;
 
-import com.google.android.gms.maps.model.LatLng;
 import java.io.Serializable;
 
 
@@ -9,10 +8,11 @@ public class Bathroom implements Serializable {
 
     private String name;
     private String picture;
-    private String mapID;
-    private LatLng location;
+    private String map;
+    private String ID;
+    private float[] location = new float[2];
 
-    private double totalRatings;
+    private float totalRatings;
     private int numRatings;
 
     private int numStalls;
@@ -26,13 +26,14 @@ public class Bathroom implements Serializable {
     private boolean isWheelchair;
     private boolean isFamily;
 
-    public Bathroom(String name, String pic, String mapID, LatLng loc, int numStalls, int numSinks, int numUrinals,
+    public Bathroom(String name, String pic, String map, String id, float[] loc, int numStalls, int numSinks, int numUrinals,
                     boolean isMale, boolean isFemale, boolean isOther, boolean isWheelchair, boolean isFamily) {
         this.name = name;
         this.picture = pic;
-        this.mapID = mapID;
+        this.map = map;
+        this.ID = id;
         this.location = loc;
-        this.totalRatings = 0.0;
+        this.totalRatings = 0.0f;
         this.numRatings = 0;
         this.numStalls = numStalls;
         this.numSinks = numSinks;
@@ -44,8 +45,8 @@ public class Bathroom implements Serializable {
         this.isFamily = isFamily;
     }
 
-    public String getMapID() {
-        return this.mapID;
+    public String getMap() {
+        return this.map;
     }
 
     public String getName() {
@@ -56,13 +57,17 @@ public class Bathroom implements Serializable {
         return this.picture;
     }
 
-    public LatLng getLocation() {
+    public String getID() {
+        return this.ID;
+    }
+
+    public float[] getLocation() {
         return this.location;
     }
 
-    public double getRating() {
-        double temp = this.totalRatings/this.numRatings;
-        return Math.round(temp * 10) / 10.0;
+    public float getRating() {
+        float temp = this.totalRatings/this.numRatings;
+        return (float) (Math.round(temp * 10) / 10.0);
     }
 
     public void addRating(double newRating) {
