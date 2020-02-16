@@ -158,6 +158,8 @@ public class MainActivity extends AppCompatActivity implements BathroomsAdapter.
                                 } else {
                                     latitude = (float) location.getLatitude();
                                     longitude = (float) location.getLongitude();
+                                    //Log.d("longtitude", String.valueOf(longitude));
+                                    mAdapter.notifyDataSetChanged();
                                 }
                             }
                         }
