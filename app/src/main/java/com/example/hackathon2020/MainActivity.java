@@ -1,5 +1,6 @@
 package com.example.hackathon2020;
 
+import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -81,6 +82,29 @@ public class MainActivity extends AppCompatActivity {
         accumulate.add(new Bathroom("CSUS Room", "pic_ms130.jpg","map_ms130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
         accumulate.add(new Bathroom("CSUS Room", "pic_ms130.jpg","map_ms130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
 
+        return accumulate;
+    }
+
+    private List<Bathroom> loadBathrooms() {
+        List<Bathroom> accumulate = new ArrayList<Bathroom>();
+        String path = "bathrooms";
+        InputStream in;
+        String[] fileNames;
+        try {
+            fileNames = getAssets().list(path);
+
+            for (String name : fileNames) {
+                in = getAssets().open(path + "/" + name);
+                ObjectInputStream objIn = new ObjectInputStream(in);
+                Bathroom room = (Bathroom) objIn.readObject();
+                Log.d("bathrooms", room.getID());
+                accumulate.add(room);
+                objIn.close();
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
         return accumulate;
     }
 
