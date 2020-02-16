@@ -68,7 +68,7 @@ public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.View
         // Set item views based on your views and data model
         ImageView bathroomImageView = viewHolder.bathroomImageView;
 //        TODO : make this give an image instead of just a String of the filename
-        bathroomImageView.setImageDrawable();
+        bathroomImageView.setImageResource(R.drawable.pic_MS130);
 
         TextView nameTextView = viewHolder.nameTextView;
         nameTextView.setText(bathroom.getName());
@@ -78,8 +78,10 @@ public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.View
         float distanceLat = bathroom.getLocation()[0];
         float distanceLong = bathroom.getLocation()[1];
 //      get users current location
+        float currentLat;
+        float currentLong;
 
-        float distance = 0.0// MATH
+        float distance = Math.round(equation * 100) / 100; // MATH
 
         distanceTextView.setText(Float.toString(distance));
 

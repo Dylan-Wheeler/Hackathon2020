@@ -20,7 +20,8 @@
             <ImageView
                 android:id="@+id/iv_map_image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:src="@drawable/pic_MS130"/>
 
 <!-- put the icon modifiers (tags) here -->
 <!-- TODO : add modifiers and their icons -->
