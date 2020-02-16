@@ -1,41 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="16dp"
     android:orientation="horizontal">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/iv_bathroom_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"/>
+    <ImageView
+        android:id="@+id/iv_bathroom_image"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"/>
 
-        <TextView
-            android:id="@+id/tv_bathroom_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/iv_bathroom_image"/>
+    <TextView
+        android:id="@+id/tv_bathroom_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/iv_bathroom_image"
+        android:layout_alignStart="@+id/iv_bathroom_image"/>
 
-        <TextView
-            android:id="@+id/tv_bathroom_distance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"/>
+    <TextView
+        android:id="@+id/tv_bathroom_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"/>
 
-        <RatingBar
-            android:id="@+id/rb_bathroom_rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:numStars="5"
-            android:layout_alignTop="@id/tv_bathroom_name"
-            android:layout_centerHorizontal="true"/>
+    <RatingBar
+        android:id="@+id/rb_bathroom_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:layout_below="@id/tv_bathroom_name"
+        android:layout_centerHorizontal="true"/>
 
-    </RelativeLayout>
-</LinearLayout>
+</RelativeLayout>

@@ -1,12 +1,14 @@
 package com.example.hackathon2020;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,17 +21,20 @@ import static com.example.hackathon2020.MainActivity.longitude;
 public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.ViewHolder> {
     // Provide a direct reference to each of the views within a data item
     // Used to cache the views within the item layout for fast access
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
         public ImageView bathroomImageView;
         public TextView nameTextView;
         public TextView distanceTextView;
         public RatingBar bathroomRatingsBar;
+        public RelativeLayout parentLayout;
+
+        OnBathroomListener onBathroomListener;
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
-        public ViewHolder(View itemView) {
+        public ViewHolder(View itemView, OnBathroomListener onBathroomListener) {
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
             super(itemView);
@@ -38,15 +43,26 @@ public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.View
             nameTextView = itemView.findViewById(R.id.tv_bathroom_name);
             distanceTextView = itemView.findViewById(R.id.tv_bathroom_distance);
             bathroomRatingsBar = itemView.findViewById(R.id.rb_bathroom_rating);
+            parentLayout = itemView.findViewById(R.id.rl_layout);
+
+            this.onBathroomListener = onBathroomListener;
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            onBathroomListener.onBathroomClick(getAdapterPosition());
         }
     }
 
     // Store a member variable for the contacts
     private List<Bathroom> mContacts;
+    private OnBathroomListener mOnBathroomListener;
 
     // Pass in the contact array into the constructor
-    public BathroomsAdapter(List<Bathroom> bathrooms) {
+    public BathroomsAdapter(List<Bathroom> bathrooms, OnBathroomListener onBathroomListener) {
         mContacts = bathrooms;
+        this.mOnBathroomListener = onBathroomListener;
     }
 
     // Usually involves inflating a layout from XML and returning the holder
@@ -59,7 +75,7 @@ public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.View
         View contactView = inflater.inflate(R.layout.rv_list_item, parent, false);
 
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(contactView);
+        ViewHolder viewHolder = new ViewHolder(contactView, mOnBathroomListener);
 
         return viewHolder;
     }
@@ -123,11 +139,24 @@ public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.View
 
         RatingBar bathroomRatingBar = viewHolder.bathroomRatingsBar;
         bathroomRatingBar.setRating(bathroom.getRating());
+
+/*
+        viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, BathroomActivity.class);
+            }
+        });
+ */
     }
 
     // Returns the total count of items in the list
     @Override
     public int getItemCount() {
         return mContacts.size();
+    }
+
+    public interface OnBathroomListener {
+        void onBathroomClick(int position);
     }
 }

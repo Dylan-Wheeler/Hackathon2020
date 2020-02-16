@@ -27,10 +27,12 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BathroomsAdapter.OnBathroomListener {
 
     private RecyclerView BathroomListRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         BathroomListRecyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new BathroomsAdapter(bathrooms);
+        mAdapter = new BathroomsAdapter(bathrooms, this);
         BathroomListRecyclerView.setAdapter(mAdapter);
 
 
@@ -84,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
         return accumulate;
     }
-
+/*
     private List<Bathroom> loadBathrooms() {
         List<Bathroom> accumulate = new ArrayList<Bathroom>();
         String path = "bathrooms";
@@ -107,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return accumulate;
     }
-
+*/
     private boolean checkPermissions(){
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
@@ -196,6 +198,12 @@ public class MainActivity extends AppCompatActivity {
     };
 
 //    TODO : change view to corresponding bathroom page when clicked
+
+    public void onBathroomClick(int position) {
+        Intent intent = new Intent(this, BathroomActivity.class);
+        intent.putExtra("some_object", bathrooms.get(position));
+        startActivity(intent);
+    }
 
 //    TODO : add settings page and link to it
 
