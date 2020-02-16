@@ -10,6 +10,8 @@ public class Bathroom implements Serializable {
     private String ID;
     private Geolocation location;
 
+    private float distance = 0;
+
     private float totalRatings;
     private int numRatings;
 
@@ -119,8 +121,16 @@ public class Bathroom implements Serializable {
         return this.isFamily;
     }
 
+    public void setDistance(float dist) {
+        this.distance = dist;
+    }
+
+    public float getDistance() {
+        return this.distance;
+    }
+
     public String getProperties() {
-        String out = this.getRating() + "\n";
+        String out = "Rating: " + this.getRating() + "\n";
 
 
         if (this.isMale) {
