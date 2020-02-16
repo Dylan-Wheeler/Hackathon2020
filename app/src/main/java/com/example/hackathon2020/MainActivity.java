@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         List<Bathroom> accumulate = new ArrayList<Bathroom>();
 
         accumulate.add(new Bathroom("CSUS Room", "pic_ms130.jpg","map_ms130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
-        accumulate.add(new Bathroom("CSUS Room", "pic_ms130.jpg","map_ms130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
-        accumulate.add(new Bathroom("CSUS Room", "pic_ms130.jpg","map_ms130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
+        accumulate.add(new Bathroom("ICT 1st Floor North Bathroom", "pic_ict121w.jpg","map_ict121w.jpg", "ICT121W", new float[]{51.08039f,-114.13101f}, 2, 2, 2, true, false, false, true, false));
+        accumulate.add(new Bathroom("ENG B NW Basement Bathroom", "pic_enb09w.jpg","map_enb09w.jpg", "ENB09W", new float[]{51.08069f,-114.13146f}, 1, 1, 1, true, false, false, true, false));
         accumulate.add(new Bathroom("CSUS Room", "pic_ms130.jpg","map_ms130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
         accumulate.add(new Bathroom("CSUS Room", "pic_ms130.jpg","map_ms130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
         accumulate.add(new Bathroom("CSUS Room", "pic_ms130.jpg","map_ms130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
