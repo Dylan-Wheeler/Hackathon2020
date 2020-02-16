@@ -1,6 +1,7 @@
 package com.example.hackathon2020;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,7 +69,7 @@ public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.View
         // Set item views based on your views and data model
         ImageView bathroomImageView = viewHolder.bathroomImageView;
 //        TODO : make this give an image instead of just a String of the filename
-        bathroomImageView.setImageResource(R.drawable.pic_MS130);
+        bathroomImageView.setImageDrawable(Drawable.createFromPath("pic_ms130.jpg"));
 
         TextView nameTextView = viewHolder.nameTextView;
         nameTextView.setText(bathroom.getName());

@@ -3,6 +3,7 @@ package com.example.hackathon2020;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -32,7 +33,7 @@ public class BathroomActivity extends AppCompatActivity {
         bathroomRatingBar = findViewById(R.id.rb_bathroom_rating);
 
 //        TODO : make this link to an actual image instead of just the string
-        mapImageImageView.setImageDrawable(currentBathroom.getMapID());
+        mapImageImageView.setImageDrawable(Drawable.createFromPath("pic_ms130.jpg"));
     }
 
     protected void sendSanitationRequest() {
@@ -47,6 +48,5 @@ public class BathroomActivity extends AppCompatActivity {
             Context context = getApplicationContext();
             Toast.makeText(context, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
         }
-    }
     }
 }

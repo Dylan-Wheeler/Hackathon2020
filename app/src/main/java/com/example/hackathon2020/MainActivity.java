@@ -39,16 +39,16 @@ public class MainActivity extends AppCompatActivity {
     private List<Bathroom> loadTestBathrooms(){
         List<Bathroom> accumulate = new ArrayList<Bathroom>();
 
-        accumulate.add(new Bathroom("CSUS Room", "pic_MS130.jpg","map_MS130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
-        accumulate.add(new Bathroom("CSUS Room", "pic_MS130.jpg","map_MS130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
-        accumulate.add(new Bathroom("CSUS Room", "pic_MS130.jpg","map_MS130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
-        accumulate.add(new Bathroom("CSUS Room", "pic_MS130.jpg","map_MS130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
-        accumulate.add(new Bathroom("CSUS Room", "pic_MS130.jpg","map_MS130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
-        accumulate.add(new Bathroom("CSUS Room", "pic_MS130.jpg","map_MS130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
-        accumulate.add(new Bathroom("CSUS Room", "pic_MS130.jpg","map_MS130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
-        accumulate.add(new Bathroom("CSUS Room", "pic_MS130.jpg","map_MS130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
-        accumulate.add(new Bathroom("CSUS Room", "pic_MS130.jpg","map_MS130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
-        accumulate.add(new Bathroom("CSUS Room", "pic_MS130.jpg","map_MS130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
+        accumulate.add(new Bathroom("CSUS Room", "pic_ms130.jpg","map_ms130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
+        accumulate.add(new Bathroom("CSUS Room", "pic_ms130.jpg","map_ms130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
+        accumulate.add(new Bathroom("CSUS Room", "pic_ms130.jpg","map_ms130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
+        accumulate.add(new Bathroom("CSUS Room", "pic_ms130.jpg","map_ms130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
+        accumulate.add(new Bathroom("CSUS Room", "pic_ms130.jpg","map_ms130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
+        accumulate.add(new Bathroom("CSUS Room", "pic_ms130.jpg","map_ms130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
+        accumulate.add(new Bathroom("CSUS Room", "pic_ms130.jpg","map_ms130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
+        accumulate.add(new Bathroom("CSUS Room", "pic_ms130.jpg","map_ms130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
+        accumulate.add(new Bathroom("CSUS Room", "pic_ms130.jpg","map_ms130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
+        accumulate.add(new Bathroom("CSUS Room", "pic_ms130.jpg","map_ms130.jpg", "MS130", new float[]{51.07996f,-114.12789f}, 1, 1, 1, false, false, true, true, false));
 
         return accumulate;
     }
