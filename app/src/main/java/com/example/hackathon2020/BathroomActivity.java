@@ -39,10 +39,17 @@ public class BathroomActivity extends AppCompatActivity {
         bathroomPropertiesTextView = findViewById(R.id.tv_bathroom_properties);
         //bathroomRatingBar = findViewById(R.id.rb_bathroom_rating);
 
-        mapImageImageView.setImageDrawable(Drawable.createFromPath(bathroom.getMap()));
+        mapImageImageView.setImageResource(R.drawable.eng_bathroom_map);
         Log.d(TAG, "Map Drawn");
 
-        bathroomDistanceTextView.setText("");
+        String format;
+        if (bathroom.getDistance() < 1000) {
+            format = String.format("%3.0f m away", bathroom.getDistance());
+        } else {
+            format = String.format("%.2f km away", bathroom.getDistance());
+        }
+
+        bathroomDistanceTextView.setText(format);
         bathroomPropertiesTextView.setText(bathroom.getProperties());
         //bathroomRatingBar.setRating(bathroom.getRating());
         //mapImageImageView.setImageDrawable(Drawable.createFromPath(bathroom.getPicture()));

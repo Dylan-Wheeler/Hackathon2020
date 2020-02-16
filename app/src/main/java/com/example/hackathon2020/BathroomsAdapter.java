@@ -3,6 +3,7 @@ package com.example.hackathon2020;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.File;
 import java.util.List;
 
 import static com.example.hackathon2020.MainActivity.latitude;
@@ -114,7 +116,7 @@ public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.View
 
         // Set item views based on your views and data model
         ImageView bathroomImageView = viewHolder.bathroomImageView;
-        bathroomImageView.setImageDrawable(Drawable.createFromPath(bathroom.getPicture()));
+        bathroomImageView.setImageResource(R.drawable.pic_enb09w);
 
         TextView nameTextView = viewHolder.nameTextView;
         nameTextView.setText(bathroom.getName());
@@ -128,6 +130,7 @@ public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.View
         float currentLong = longitude;
 
         float distance = calculateDistance(distanceLat, currentLat, distanceLong, currentLong);// Calculates distance then rounds to 2 decimal places.
+        bathroom.setDistance(distance);
         String format;
         if (distance < 1000) {
             format = String.format("%3.0f m away", distance);

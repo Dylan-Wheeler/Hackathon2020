@@ -30,6 +30,7 @@ import com.google.android.gms.tasks.Task;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements BathroomsAdapter.OnBathroomListener {
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements BathroomsAdapter.
     FusedLocationProviderClient mFusedLocationClient;
 
     private List<Bathroom> bathrooms;
+    private List<Bathroom> filteredBathrooms;
 
     private static final String TAG = "MainActivity";
 
@@ -57,6 +59,9 @@ public class MainActivity extends AppCompatActivity implements BathroomsAdapter.
         bathrooms = loadTestBathrooms();
 
         getLastLocation();
+
+        Collections.sort(bathrooms, new CompareBathrooms(new Geolocation(latitude, longitude)));
+        Collections.reverse(bathrooms);
 
         BathroomListRecyclerView = findViewById(R.id.rv_bathroom_list);
 

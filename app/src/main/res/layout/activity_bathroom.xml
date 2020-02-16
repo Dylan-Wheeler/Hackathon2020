@@ -9,9 +9,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp"
-        android:padding="16dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,8 +20,8 @@
             <ImageView
                 android:id="@+id/iv_map_image"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:scaleType="centerCrop"/>
+                android:layout_height="344dp"
+                android:scaleType="fitCenter"/>
 
 <!-- put the icon modifiers (tags) here -->
 <!-- TODO : add modifiers and their icons -->
@@ -30,12 +29,20 @@
             <TextView
                 android:id="@+id/tv_bathroom_distance"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:textSize="20sp"/>
 
             <TextView
                 android:id="@+id/tv_bathroom_properties"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:textSize="16sp"
+                android:lineSpacingMultiplier="1.2"/>
 <!--
             <RatingBar
                 android:id="@+id/rb_bathroom_rating"
