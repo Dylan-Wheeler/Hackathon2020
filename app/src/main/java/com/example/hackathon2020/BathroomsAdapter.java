@@ -75,8 +75,13 @@ public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.View
 
         TextView distanceTextView = viewHolder.distanceTextView;
 //        TODO : do some funky math to find the distance from current location
-        int distance = bathroom.getLocation();
-        distanceTextView.setText(Integer.toString(distance));
+        float distanceLat = bathroom.getLocation()[0];
+        float distanceLong = bathroom.getLocation()[1];
+//      get users current location
+
+        float distance = 0.0// MATH
+
+        distanceTextView.setText(Float.toString(distance));
 
         RatingBar bathroomRatingBar = viewHolder.bathroomRatingsBar;
         bathroomRatingBar.setRating(bathroom.getRating());
