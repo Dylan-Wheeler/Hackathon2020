@@ -147,7 +147,6 @@ public class MainActivity extends AppCompatActivity implements BathroomsAdapter.
 
     private boolean isLocationEnabled(){
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        requestingLocationUpdates = true;
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
                 LocationManager.NETWORK_PROVIDER
         );
@@ -220,14 +219,6 @@ public class MainActivity extends AppCompatActivity implements BathroomsAdapter.
         Log.d(TAG, position + " currently in queue");
 
         startActivity(intent);
-    }
-
-    private boolean requestingLocationUpdates;
-    protected void onResume() {
-        super.onResume();
-        if (requestingLocationUpdates) {
-            getLastLocation();
-        }
     }
 
 
