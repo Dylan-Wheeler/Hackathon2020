@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        load array of bathroom objects
+//      TODO : load array of Bathroom objects
 
         BathroomListRecyclerView = findViewById(R.id.rv_bathroom_list);
 
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         BathroomListRecyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new RvAdapter(bathrooms);
+        mAdapter = new MyAdapter(bathrooms);
         BathroomListRecyclerView.setAdapter(mAdapter);
     }
 }

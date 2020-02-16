@@ -65,7 +65,7 @@ public class Bathroom {
         else if (isFemale) {
             out += "Female\n";
         }
-        else (isOther) {
+        else if (isOther) {
             out += "Gender Neutral\n";
         }
 
@@ -83,6 +83,6 @@ public class Bathroom {
             out += "Family\n";
         }
 
-
+        return out;
     }
 }
