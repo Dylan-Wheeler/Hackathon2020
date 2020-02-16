@@ -1,10 +1,12 @@
 package com.example.hackathon2020;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Filter {
 
     private ArrayList<Bathroom> allBathrooms;
+    private Geolocation userLocation;
 
     /**
      * The constructor for the Filter class.
@@ -13,8 +15,18 @@ public class Filter {
      *
      * @param bathrooms
      */
-    public Filter(ArrayList<Bathroom> bathrooms){
+    public Filter(ArrayList<Bathroom> bathrooms, Geolocation currentLocation){
         this.allBathrooms = bathrooms;
+        this.userLocation = currentLocation;
+
+    }
+
+    public void setUserLocation(Geolocation userLocation) {
+        this.userLocation = userLocation;
+    }
+
+    public Geolocation getUserLocation() {
+        return this.userLocation;
     }
 
     /**
@@ -66,7 +78,7 @@ public class Filter {
 //            Passed all tests to get here
             applicable.add(bathroom);
         }
-
-        return applicable;
+        Collections.sort(applicable, new CompareBathrooms(this.getUserLocation()));
+        return  applicable;
     }
 }
