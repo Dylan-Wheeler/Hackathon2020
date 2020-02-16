@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Hackathon2020</string>
+    <string name="distance"> km away</string>
 </resources>
