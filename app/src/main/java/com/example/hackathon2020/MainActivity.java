@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements BathroomsAdapter.
 
     private boolean isLocationEnabled(){
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        requestingLocationUpdates = true;
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
                 LocationManager.NETWORK_PROVIDER
         );
@@ -160,9 +161,9 @@ public class MainActivity extends AppCompatActivity implements BathroomsAdapter.
                                 } else {
                                     latitude = (float) location.getLatitude();
                                     longitude = (float) location.getLongitude();
-                                    //Log.d("longtitude", String.valueOf(longitude));
-                                    mAdapter.notifyDataSetChanged();
+                                    //Log.d("longtitude", String.valueOf(longitude))
                                 }
+                                mAdapter.notifyDataSetChanged();
                             }
                         }
                 );
@@ -181,9 +182,9 @@ public class MainActivity extends AppCompatActivity implements BathroomsAdapter.
 
         LocationRequest mLocationRequest = new LocationRequest();
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        mLocationRequest.setInterval(0);
-        mLocationRequest.setFastestInterval(0);
-        mLocationRequest.setNumUpdates(1);
+        mLocationRequest.setInterval(1000);
+        mLocationRequest.setFastestInterval(1000);
+        //mLocationRequest.setNumUpdates(1);
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         mFusedLocationClient.requestLocationUpdates(
@@ -214,6 +215,15 @@ public class MainActivity extends AppCompatActivity implements BathroomsAdapter.
 
         startActivity(intent);
     }
+
+    private boolean requestingLocationUpdates;
+    protected void onResume() {
+        super.onResume();
+        if (requestingLocationUpdates) {
+            getLastLocation();
+        }
+    }
+
 
 //    TODO : add settings page and link to it
 
