@@ -1,8 +1,6 @@
 package com.example.hackathon2020;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LevelListDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,10 +30,10 @@ public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.View
             // to access the context from any ViewHolder instance.
             super(itemView);
 
-            bathroomImageView = (ImageView) itemView.findViewById(R.id.iv_bathroom_image);
-            nameTextView = (TextView) itemView.findViewById(R.id.tv_bathroom_name);
-            distanceTextView = (TextView) itemView.findViewById(R.id.tv_bathroom_distance);
-            bathroomRatingsBar = (RatingBar) itemView.findViewById(R.id.rb_bathroom_rating);
+            bathroomImageView = itemView.findViewById(R.id.iv_bathroom_image);
+            nameTextView = itemView.findViewById(R.id.tv_bathroom_name);
+            distanceTextView = itemView.findViewById(R.id.tv_bathroom_distance);
+            bathroomRatingsBar = itemView.findViewById(R.id.rb_bathroom_rating);
         }
     }
 
