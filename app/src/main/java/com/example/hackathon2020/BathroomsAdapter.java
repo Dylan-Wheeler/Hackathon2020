@@ -13,6 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import static com.example.hackathon2020.MainActivity.latitude;
+import static com.example.hackathon2020.MainActivity.longitude;
+
 public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.ViewHolder> {
     // Provide a direct reference to each of the views within a data item
     // Used to cache the views within the item layout for fast access
@@ -57,6 +60,7 @@ public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.View
 
         // Return a new holder instance
         ViewHolder viewHolder = new ViewHolder(contactView);
+
         return viewHolder;
     }
 
@@ -94,23 +98,28 @@ public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.View
 
         // Set item views based on your views and data model
         ImageView bathroomImageView = viewHolder.bathroomImageView;
-//        TODO : make this give an image instead of just a String of the filename
-        bathroomImageView.setImageDrawable(Drawable.createFromPath("pic_ms130.jpg"));
+//      TODO : make this use the correct path for the object
+        bathroomImageView.setImageDrawable(Drawable.createFromPath(bathroom.getPicture()));
 
         TextView nameTextView = viewHolder.nameTextView;
         nameTextView.setText(bathroom.getName());
 
         TextView distanceTextView = viewHolder.distanceTextView;
-//        TODO : do some funky math to find the distance from current location
+
         float distanceLat = bathroom.getLocation()[0];
         float distanceLong = bathroom.getLocation()[1];
 //      TODO: get users current location
-        float currentLat = (float) 0.0;
-        float currentLong = (float) 0.0;
+        float currentLat = latitude;
+        float currentLong = longitude;
 
-        float distance = Math.round(calculateDistance(distanceLat, currentLat, distanceLong, currentLong) * 100) / 100; // Calculates distance then rounds to 2 decimal places.
-
-        distanceTextView.setText(Float.toString(distance));
+        float distance = calculateDistance(distanceLat, currentLat, distanceLong, currentLong);// Calculates distance then rounds to 2 decimal places.
+        String format;
+        if (distance < 1000) {
+            format = String.format("%3.0f m away", distance);
+        } else {
+            format = String.format("%.2f km away", distance);
+        }
+        distanceTextView.setText(format);
 
         RatingBar bathroomRatingBar = viewHolder.bathroomRatingsBar;
         bathroomRatingBar.setRating(bathroom.getRating());
