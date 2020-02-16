@@ -120,31 +120,31 @@ public class Bathroom implements Serializable {
     }
 
     public String getProperties() {
-        String out = this.getRating() + "\n";
+        String out = "Rating: " + this.getRating() + "/5.0" + "\n";
 
 
         if (this.isMale) {
-            out += "Male\n" + this.numUrinals + "\n" ;
+            out += "This is a male washroom.\n" + "Number of Urinals: " + this.numUrinals + "\n" ;
         }
         else if (this.isFemale) {
-            out += "Female\n";
+            out += "This is a female washroom.\n";
         }
         else if (this.isOther) {
-            out += "Gender Neutral\n" + this.numUrinals + "\n";
+            out += "This is a gender neutral washroom.\n" + "Number of Urinals: " + this.numUrinals + "\n";
         }
 
-        out += + this.numSinks + "\n" + this.numStalls + "\n";
+        out += "Number of Sinks: " + this.numSinks + "\n" + "Number of Stalls: " + this.numStalls + "\n";
 
         if (isWheelchair && isFamily) {
-            out += "Wheelchair\n" + "Family\n";
+            out += "Accessible for: wheelchairs and families\n";
         }
 
         if (isWheelchair) {
-            out += "Wheelchair\n";
+            out += "Accessible for: wheelchairs\n";
         }
 
         if (isFamily) {
-            out += "Family\n";
+            out += "Accessible for: families\n";
         }
 
         return out;
