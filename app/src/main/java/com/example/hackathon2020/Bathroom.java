@@ -3,14 +3,14 @@ package com.example.hackathon2020;
 import java.io.Serializable;
 
 
-public class Bathroom implements Serializable {
+public class Bathroom implements Serializable{
     private static final long serialVersionUID = 1L;
 
     private String name;
     private String picture;
     private String map;
     private String ID;
-    private float[] location = new float[2];
+    private Geolocation location;
 
     private float totalRatings;
     private int numRatings;
@@ -32,7 +32,9 @@ public class Bathroom implements Serializable {
         this.picture = pic;
         this.map = map;
         this.ID = id;
-        this.location = loc;
+
+        this.location = new Geolocation(loc[0], loc[1]);
+
         this.totalRatings = 0.0f;
         this.numRatings = 0;
         this.numStalls = numStalls;
@@ -62,6 +64,10 @@ public class Bathroom implements Serializable {
     }
 
     public float[] getLocation() {
+        return this.getGeolocation().toArray();
+    }
+
+    public Geolocation getGeolocation(){
         return this.location;
     }
 
