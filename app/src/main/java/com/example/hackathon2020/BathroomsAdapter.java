@@ -105,8 +105,8 @@ public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.View
         float distanceLat = bathroom.getLocation()[0];
         float distanceLong = bathroom.getLocation()[1];
 //      TODO: get users current location
-        float currentLat;
-        float currentLong;
+        float currentLat = (float) 0.0;
+        float currentLong = (float) 0.0;
 
         float distance = Math.round(calculateDistance(distanceLat, currentLat, distanceLong, currentLong) * 100) / 100; // Calculates distance then rounds to 2 decimal places.
 
