@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
 //      TODO : load array of Bathroom objects
         bathrooms = loadTestBathrooms();
-        //bathrooms = loadBathrooms();
+//        bathrooms = loadBathrooms();
 
         BathroomListRecyclerView = findViewById(R.id.rv_bathroom_list);
 
