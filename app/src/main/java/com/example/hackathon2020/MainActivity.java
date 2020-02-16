@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements BathroomsAdapter.
 
     private List<Bathroom> bathrooms;
 
+    private static final String TAG = "MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -203,7 +205,13 @@ public class MainActivity extends AppCompatActivity implements BathroomsAdapter.
 
     public void onBathroomClick(int position) {
         Intent intent = new Intent(this, BathroomActivity.class);
-        intent.putExtra("some_object", bathrooms.get(position));
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("BATHROOM_OBJECT", bathrooms.get(position));
+        intent.putExtras(bundle);
+
+        Log.d(TAG, position + " currently in queue");
+
         startActivity(intent);
     }
 

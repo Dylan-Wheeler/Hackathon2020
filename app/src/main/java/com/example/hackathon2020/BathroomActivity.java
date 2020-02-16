@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -21,19 +22,30 @@ public class BathroomActivity extends AppCompatActivity {
     RatingBar bathroomRatingBar;
 
     Bathroom currentBathroom;
+    private static final String TAG = "BathroomActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bathroom);
 
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        Bathroom bathroom = (Bathroom) bundle.getSerializable("BATHROOM_OBJECT");
+        Log.d(TAG, "Bathroom loaded");
+
         mapImageImageView = findViewById(R.id.iv_map_image);
         bathroomDistanceTextView = findViewById(R.id.tv_bathroom_distance);
         bathroomPropertiesTextView = findViewById(R.id.tv_bathroom_properties);
-        bathroomRatingBar = findViewById(R.id.rb_bathroom_rating);
+        //bathroomRatingBar = findViewById(R.id.rb_bathroom_rating);
 
-//        TODO : make this link to an actual image instead of just the string
-        mapImageImageView.setImageDrawable(Drawable.createFromPath("pic_ms130.jpg"));
+        mapImageImageView.setImageDrawable(Drawable.createFromPath(bathroom.getMap()));
+        Log.d(TAG, "Map Drawn");
+
+        bathroomDistanceTextView.setText("");
+        bathroomPropertiesTextView.setText(bathroom.getProperties());
+        //bathroomRatingBar.setRating(bathroom.getRating());
+        //mapImageImageView.setImageDrawable(Drawable.createFromPath(bathroom.getPicture()));
     }
 
     protected void sendSanitationRequest() {

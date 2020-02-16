@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"/>
-
+<!--
     <RatingBar
         android:id="@+id/rb_bathroom_rating"
         android:layout_width="wrap_content"
@@ -35,5 +35,7 @@
         android:numStars="5"
         android:layout_below="@id/tv_bathroom_name"
         android:layout_centerHorizontal="true"/>
+        -->
+
 
 </RelativeLayout>

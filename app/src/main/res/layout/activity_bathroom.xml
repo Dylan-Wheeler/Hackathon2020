@@ -36,13 +36,14 @@
                 android:id="@+id/tv_bathroom_properties"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-
+<!--
             <RatingBar
                 android:id="@+id/rb_bathroom_rating"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:numStars="5"
-                android:rating="0"/>
+                android:rating="0" />
+            -->
 
         </LinearLayout>
     </ScrollView>

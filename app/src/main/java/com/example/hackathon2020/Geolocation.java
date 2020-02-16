@@ -1,6 +1,8 @@
 package com.example.hackathon2020;
 
-public class Geolocation{
+import java.io.Serializable;
+
+public class Geolocation implements Serializable {
     private float latitude;
     private float longitude;
 
