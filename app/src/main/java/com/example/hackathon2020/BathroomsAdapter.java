@@ -27,7 +27,7 @@ public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.View
         public ImageView bathroomImageView;
         public TextView nameTextView;
         public TextView distanceTextView;
-        public RatingBar bathroomRatingsBar;
+        //public RatingBar bathroomRatingsBar;
         public RelativeLayout parentLayout;
 
         OnBathroomListener onBathroomListener;
@@ -42,7 +42,7 @@ public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.View
             bathroomImageView = itemView.findViewById(R.id.iv_bathroom_image);
             nameTextView = itemView.findViewById(R.id.tv_bathroom_name);
             distanceTextView = itemView.findViewById(R.id.tv_bathroom_distance);
-            bathroomRatingsBar = itemView.findViewById(R.id.rb_bathroom_rating);
+            //bathroomRatingsBar = itemView.findViewById(R.id.rb_bathroom_rating);
             parentLayout = itemView.findViewById(R.id.rl_layout);
 
             this.onBathroomListener = onBathroomListener;
@@ -114,7 +114,6 @@ public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.View
 
         // Set item views based on your views and data model
         ImageView bathroomImageView = viewHolder.bathroomImageView;
-//      TODO : make this use the correct path for the object
         bathroomImageView.setImageDrawable(Drawable.createFromPath(bathroom.getPicture()));
 
         TextView nameTextView = viewHolder.nameTextView;
@@ -124,7 +123,7 @@ public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.View
 
         float distanceLat = bathroom.getLocation()[0];
         float distanceLong = bathroom.getLocation()[1];
-//      TODO: get users current location
+
         float currentLat = latitude;
         float currentLong = longitude;
 
@@ -137,8 +136,8 @@ public class BathroomsAdapter extends RecyclerView.Adapter<BathroomsAdapter.View
         }
         distanceTextView.setText(format);
 
-        RatingBar bathroomRatingBar = viewHolder.bathroomRatingsBar;
-        bathroomRatingBar.setRating(bathroom.getRating());
+        //RatingBar bathroomRatingBar = viewHolder.bathroomRatingsBar;
+        //bathroomRatingBar.setRating(bathroom.getRating());
 
 /*
         viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
