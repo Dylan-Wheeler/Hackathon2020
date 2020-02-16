@@ -1,22 +1,46 @@
 package com.example.hackathon2020;
 
 import android.util.Log;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Looper;
+import android.provider.Settings;
+import android.widget.Toast;
 
-import java.io.*;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
+import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BathroomsAdapter.OnBathroomListener {
 
     private RecyclerView BathroomListRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    public static float longitude;
+    public static float latitude;
+
+    FusedLocationProviderClient mFusedLocationClient;
 
     private List<Bathroom> bathrooms;
 
@@ -25,9 +49,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
 //      TODO : load array of Bathroom objects
         bathrooms = loadTestBathrooms();
-//        bathrooms = loadBathrooms();
+
+        getLastLocation();
 
         BathroomListRecyclerView = findViewById(R.id.rv_bathroom_list);
 
@@ -36,8 +63,11 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         BathroomListRecyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new BathroomsAdapter(bathrooms);
+        mAdapter = new BathroomsAdapter(bathrooms, this);
         BathroomListRecyclerView.setAdapter(mAdapter);
+
+
+        //mAdapter.notifyDataSetChanged();
     }
 
     private List<Bathroom> loadTestBathrooms(){
@@ -56,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
         return accumulate;
     }
-
+/*
     private List<Bathroom> loadBathrooms() {
         List<Bathroom> accumulate = new ArrayList<Bathroom>();
         String path = "bathrooms";
@@ -79,8 +109,101 @@ public class MainActivity extends AppCompatActivity {
         }
         return accumulate;
     }
+*/
+    private boolean checkPermissions(){
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            return true;
+        }
+        return false;
+    }
+
+    private void requestPermissions(){
+        ActivityCompat.requestPermissions(
+                this,
+                new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION},
+                1
+        );
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                // Granted. Start getting the location information
+                getLastLocation();
+            }
+        }
+    }
+
+    private boolean isLocationEnabled(){
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
+                LocationManager.NETWORK_PROVIDER
+        );
+    }
+
+    @SuppressLint("MissingPermission")
+    private void getLastLocation(){
+        if (checkPermissions()) {
+            if (isLocationEnabled()) {
+                mFusedLocationClient.getLastLocation().addOnCompleteListener(
+                        new OnCompleteListener<Location>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Location> task) {
+                                Location location = task.getResult();
+                                if (location == null) {
+                                    requestNewLocationData();
+                                } else {
+                                    latitude = (float) location.getLatitude();
+                                    longitude = (float) location.getLongitude();
+                                }
+                            }
+                        }
+                );
+            } else {
+                Toast.makeText(this, "Turn on location", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(intent);
+            }
+        } else {
+            requestPermissions();
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    private void requestNewLocationData(){
+
+        LocationRequest mLocationRequest = new LocationRequest();
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setInterval(0);
+        mLocationRequest.setFastestInterval(0);
+        mLocationRequest.setNumUpdates(1);
+
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        mFusedLocationClient.requestLocationUpdates(
+                mLocationRequest, mLocationCallback,
+                Looper.myLooper()
+        );
+    }
+
+    private LocationCallback mLocationCallback = new LocationCallback() {
+        @Override
+        public void onLocationResult(LocationResult locationResult) {
+            Location mLastLocation = locationResult.getLastLocation();
+            latitude = (float) mLastLocation.getLatitude();
+            longitude = (float) mLastLocation.getLongitude();
+        }
+    };
 
 //    TODO : change view to corresponding bathroom page when clicked
+
+    public void onBathroomClick(int position) {
+        Intent intent = new Intent(this, BathroomActivity.class);
+        intent.putExtra("some_object", bathrooms.get(position));
+        startActivity(intent);
+    }
 
 //    TODO : add settings page and link to it
 
