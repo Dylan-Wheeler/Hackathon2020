@@ -70,7 +70,7 @@ public class Bathroom implements Serializable {
         return (float) (Math.round(temp * 10) / 10.0);
     }
 
-    public void addRating(double newRating) {
+    public void addRating(float newRating) {
         this.totalRatings += newRating;
         this.numRatings++;
     }
@@ -86,7 +86,7 @@ public class Bathroom implements Serializable {
             out += "Female\n";
         }
         else if (this.isOther) {
-            out += "Gender Neutral\n";
+            out += "Gender Neutral\n" + this.numUrinals + "\n";
         }
 
         out += + this.numSinks + "\n" + this.numStalls + "\n";
