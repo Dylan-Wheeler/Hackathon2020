@@ -1,10 +1,11 @@
 package com.example.hackathon2020;
 
-import com.google.android.gms.maps.*;
+import com.google.android.gms.maps.model.LatLng;
 
 
 public class Bathroom {
     private String name;
+    private String picture;
     private String mapID;
     private LatLng location;
 
@@ -22,9 +23,10 @@ public class Bathroom {
     private boolean isWheelchair;
     private boolean isFamily;
 
-    public Bathroom(String name, String mapID, LatLng loc, int numStalls, int numSinks, int numUrinals,
+    public Bathroom(String name, String pic, String mapID, LatLng loc, int numStalls, int numSinks, int numUrinals,
                     boolean isMale, boolean isFemale, boolean isOther, boolean isWheelchair, boolean isFamily) {
         this.name = name;
+        this.picture = pic;
         this.mapID = mapID;
         this.location = loc;
         this.totalRatings = 0.0;
@@ -43,6 +45,18 @@ public class Bathroom {
         return this.mapID;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public String getPicture() {
+        return this.picture;
+    }
+
+    public LatLng getLocation() {
+        return this.location;
+    }
+
     public double getRating() {
         double temp = this.totalRatings/this.numRatings;
         return Math.round(temp * 10) / 10.0;
@@ -53,19 +67,17 @@ public class Bathroom {
         this.numRatings++;
     }
 
-    @Override
-    public String toString() {
-        String out = this.name + "\n" + this.mapID + "\n" +
-                     this.location.toString() + "\n" + this.getRating() + "\n";
+    public String getProperties() {
+        String out = this.getRating() + "\n";
 
 
-        if (isMale) {
+        if (this.isMale) {
             out += "Male\n" + this.numUrinals + "\n" ;
         }
-        else if (isFemale) {
+        else if (this.isFemale) {
             out += "Female\n";
         }
-        else if (isOther) {
+        else if (this.isOther) {
             out += "Gender Neutral\n";
         }
 
