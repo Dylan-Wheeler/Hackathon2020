@@ -1,6 +1,6 @@
 # Porcelain Thrones
 
-##An Android App By: Vivid Pink
+**An Android App By: Vivid Pink**
 
 Porcelain Thrones is an application designed to make taking a number 2 on campus, a not so shitty experience.
 
